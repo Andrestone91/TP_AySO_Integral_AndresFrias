@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "testing" do |vmHost1|
     vmHost1.vm.box = "ubuntu/jammy64"
     vmHost1.vm.hostname = "vmTesting"
-    vmHost1.vm.network "private_network", :name => '', ip: "192.168.56.20"
+    vmHost1.vm.network "private_network", :name => '', ip: "192.168.56.10"
     
     # Comparto la carpeta del host donde estoy parado contra la vm
     vmHost1.vm.synced_folder 'compartido_Host1/', '/home/vagrant/compartido', 
@@ -47,9 +47,9 @@ Vagrant.configure("2") do |config|
     
     config.vm.define :produccion do |vmHost2|
       #vmHost2.vm.box = "generic/rhel9"
-      vmHost2.vm.box = "generic/fedora39"
+      vmHost2.vm.box = "generic/fedora33"
       vmHost2.vm.hostname = "vmProduccion"
-      vmHost2.vm.network "private_network", :name => '', ip: "192.168.56.21"
+      vmHost2.vm.network "private_network", :name => '', ip: "192.168.56.11"
       
       # Comparto la carpeta del host donde estoy parado contra la vm
       vmHost2.vm.synced_folder 'compartido_Host2/', '/home/vagrant/compartido'
