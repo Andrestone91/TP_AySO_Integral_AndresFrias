@@ -1,0 +1,10 @@
+[all:children]
+testing
+produccion
+
+[testing]
+192.168.56.10
+
+[produccion]
+192.168.56.11
+localhost ansible_connection=local 

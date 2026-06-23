@@ -1,0 +1,24 @@
+---
+# tasks file for Instala-tools_Andres_Frias
+
+- name: Instalar tools en Ubuntu
+  become: yes
+  apt:
+    name:
+      - htop
+      - tmux
+      - speedtest-cli
+    state: present
+  when: ansible_os_family == "Debian"
+
+- name: Instalar tools en Fedora
+  become: yes
+  dnf:
+    name:
+      - htop
+      - tmux
+      - speedtest-cli
+    state: present
+    update_cache: yes
+  when: ansible_os_family == "RedHat"
+

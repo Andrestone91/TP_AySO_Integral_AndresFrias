@@ -1,0 +1,10 @@
+---
+# tasks file for Sudoers_Andres_Frias
+
+- name: Permitir sudo sin password al grupo
+  become: yes
+  copy:
+    dest: "/etc/sudoers.d/Andres_Frias"
+    content: "%Andres_Frias ALL=(ALL) NOPASSWD:ALL"
+    mode: '0440'
+    validate: "visudo -cf %s"
