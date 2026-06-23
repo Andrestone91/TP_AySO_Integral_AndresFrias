@@ -1,0 +1,27 @@
+---
+- hosts: 
+#  - all
+  - testing
+  - produccion
+
+  # Variables Globales
+  vars_files:
+    - vars/main.yml
+
+  tasks:
+    - include_role:
+        name: TP_INI
+
+    - include_role:
+        name: Alta_Usuarios_Andres_Frias
+
+    - include_role:
+        name: Instala-tools_Andres_Frias
+
+    - include_role:
+        name: Sudoers_Andres_Frias
+    
+    - name: "Otra tarea"
+      debug:
+        msg: "Despues de la ejecucion del rol"
+
