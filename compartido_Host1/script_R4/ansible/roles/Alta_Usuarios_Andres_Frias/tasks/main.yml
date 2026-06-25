@@ -1,0 +1,37 @@
+---
+# tasks file for Alta_Usuarios_Andres_Frias
+
+- name: Crear grupo principal
+  become: yes
+  group:
+    name: "Andres_Frias"
+    state: present
+
+- name: Crear grupos secundarios R1-R6
+  become: yes
+  group:
+    name: "G_{{ item }}"
+    state: present
+  loop:
+    - R1
+    - R2
+    - R3
+    - R4
+    - R5
+    - R6
+
+- name: Crear usuarios del grupo
+  become: yes
+  user:
+    name: "{{ item.name }}"
+    password: "{{ 'vagrant' | password_hash('sha512', 'tp_integral') }}"
+    groups: "Andres_Frias,G_{{ item.rol }}"
+    append: yes
+    state: present
+  loop:
+    - { name: "r1_Andres", rol: "R1" }
+    - { name: "r2_Andres", rol: "R2" }
+    - { name: "r3_Andres", rol: "R3" }
+    - { name: "r4_Andres", rol: "R4" }
+    - { name: "r5_Andres", rol: "R5" }
+    - { name: "r6_Andres", rol: "R6" }
