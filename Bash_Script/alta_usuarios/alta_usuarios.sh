@@ -7,8 +7,8 @@
 # Es idempotente: si el usuario ya existe no lo vuelve a crear
 # =============================================================
 
-LISTA="$(dirname "$0")/Lista_Usuarios.txt"
-GRUPO_SECUNDARIO="ASANCHEZ"
+LISTA="$(dirname "$0")/lista_Usuarios.txt"
+GRUPO_SECUNDARIO="Andre"
 CLAVE_DEFAULT="vagrant"
 
 # ── PASO 1: Crear grupo secundario si no existe ──────────────

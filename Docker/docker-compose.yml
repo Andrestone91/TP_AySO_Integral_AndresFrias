@@ -2,7 +2,8 @@ version: '3'
 
 services:
     web:
-        image: andresfrias91/tp_div_313_andres_frias
+        #image: andresfrias91/tp_div_313_andres_frias
+        image: tp_div_313_andres_frias
         ports:
             - "8081:80"
         volumes:

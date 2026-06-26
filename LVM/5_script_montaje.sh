@@ -1,7 +1,6 @@
 #!bin/bash
 
-mkdir /var/lib/docker/
-mkdir /work/
+sudo mkdir /work/
 
 DOCKER=$(sudo fdisk -l | grep "docker" | awk '{print $2}' | awk -F ':' '{print $1}')
 WORKAREAS=$(sudo fdisk -l | grep "workareas" | awk '{print $2}' | awk -F ':' '{print $1}')
