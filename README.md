@@ -41,7 +41,19 @@ Tecnicatura Universitaria en Programación - UTN FRA
 │       └── Instala-tools_Andres_Frias/   # Instala htop, tmux y speedtest-cli
 ├── VagrantFile/
 │   └── Vagrantfile                       # Configuración de las VMs
-├── LVM/
+├── Docker/
+│   ├── web/
+│   │   ├── file/   
+│   │   │   └── info.txt                  # se usa para agregar informacion al html
+│   │   ├── scripts/   
+│	│	│   ├── get-current-date.js
+│	│	│ 	├── get-file-content.js
+│	│	│   └── get-ip-publica.js
+│	│	└── index.hrml					  # el html principal
+│   ├──  docker-compose.yml	
+│   ├──  dockerfile		
+│	└──  script_crear_imagen.sh  		  # crea la imagen docker
+└── LVM/
     ├── 1_script_crear_particion.sh       # crea las particiones
 	├── 2_script_crear_swap.sh            # crea el swap
 	├── 3_script_crear_lv.sh              # crea LVM
