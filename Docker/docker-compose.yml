@@ -7,5 +7,6 @@ services:
         ports:
             - "8081:80"
         volumes:
-          - $PWD/web/file:/usr/share/nginx/html/file andresfrias91/tp_div_313_andres_frias
+          #- $PWD/web/file:/usr/share/nginx/html/file andresfrias91/tp_div_313_andres_frias
+          $PWD/web/file:/usr/share/nginx/html/file tp_div_313_andres_frias
 

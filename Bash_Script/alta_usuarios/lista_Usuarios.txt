@@ -1,5 +1,5 @@
 # Formato: usuario:grupo_principal:comentario
-r1_Andress:G_R1:Lider
+r1_Andres:G_R1:Lider
 r2_Andres:G_R2:Arquitectura
 r3_Andres:G_R3:Automatizacion_N1
 r4_Andres:G_R4:Automatizacion_N2

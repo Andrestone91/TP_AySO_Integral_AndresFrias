@@ -2,7 +2,11 @@
 
 DISCO=$(sudo fdisk -l | grep "3 GiB" | awk '{print $2}' | awk -F ':' '{print $1}')
 
-sudo fdisk $DISCO << EOF
+# Verificar si ya existe la partición
+if lsblk -n "$DISCO" | grep -q "^$(basename "$DISCO")1"; then
+    echo "La partición ${DISCO}1 ya existe. Saltando..."
+else
+    sudo fdisk "$DISCO" << EOF
 n
 p
 
@@ -14,7 +18,7 @@ w
 EOF
 
 
-echo "swap creada"
+	echo "swap creada"
 
-sudo fdisk -l $DISCO
+sudo fdisk -l "$DISCO"
 
