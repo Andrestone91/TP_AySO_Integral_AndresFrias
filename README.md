@@ -1,14 +1,14 @@
-# TP_AySO_Integral_FAndres
+# TP_AySO_Integral_AndresFrias
 Nombre y Apellido: Andres Frias - Legajo: 120586
 
-## Grupo FAndres
+## Grupo AndresFrias
 
 ## Materia
 Arquitectura y Sistemas Operativos  
 Tecnicatura Universitaria en Programación - UTN FRA
 
 ## Datos del Grupo
-- **Nombre del Grupo:** FAndres
+- **Nombre del Grupo:** AndresFrias
 - **División:** 313
 - **Turno:** Noche
 
@@ -48,8 +48,8 @@ Tecnicatura Universitaria en Programación - UTN FRA
 ## Infraestructura (R2)
 
 2 VMs con QEMU (Apple Silicon):
-- **VM1-Grupo-FAndres** - Ubuntu 22.04 ARM64 (Testing)
-- **VM2-Grupo-FAndres** - Fedora (Producción)
+- **VM1-Grupo-AndresFrias** - Ubuntu 22.04 ARM64 (Testing)
+- **VM2-Grupo-AndresFrias** - Fedora (Producción)
 
 ### Discos y LVM
 
@@ -58,6 +58,17 @@ Tecnicatura Universitaria en Programación - UTN FRA
 | vg_datos | lv_docker    | 10M    | /var/lib/docker  |
 | vg_datos | lv_workareas | 2.5GB  | /work            |
 | vg_temp  | lv_swap      | 1.9GB  | SWAP             |
+
+
+Creacion de LVM:
+\`\`\`bash
+cd LVM/
+bash 1_script_crear_particion.sh
+bash 2_script_crear_swap.sh
+bash 3_script_crear_lv.sh
+bash 4_script_formatear.sh
+bash 5_script_montaje.sh
+\`\`\`
 
 ## Bash Scripting (R3)
 

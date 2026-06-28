@@ -17,8 +17,7 @@ t
 w
 EOF
 
-
-	echo "swap creada"
+    echo "swap creada"
+fi
 
 sudo fdisk -l "$DISCO"
-
