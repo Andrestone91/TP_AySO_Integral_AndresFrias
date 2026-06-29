@@ -1,2 +1,132 @@
-# TP_AySO_Integral_Andres_Frias
+# TP_AySO_Integral_AndresFrias
 Nombre y Apellido: Andres Frias - Legajo: 120586
+
+## Grupo AndresFrias
+
+## Materia
+Arquitectura y Sistemas Operativos  
+Tecnicatura Universitaria en Programación - UTN FRA
+
+## Datos del Grupo
+- **Nombre del Grupo:** AndresFrias
+- **División:** 313
+- **Turno:** Noche
+
+## Integrantes
+
+|   Rol   | Nombre | Apellido |
+|---------|--------|----------|
+| R1 - R6 | Andres |   Frias  | 
+
+## Estructura del Repositorio
+```sh
+.
+├── Bash_script/
+│   ├── alta_usuarios/
+│   │   ├── alta_usuarios.sh              # Script de alta de usuarios
+│   │   └── Lista_Usuarios.txt       	  # Lista de usuarios a crear
+│   └── check_url/
+│       ├── check_URL.sh           	      # Script de chequeo de URLs
+│       └── Lista_URL.txt          	      # Lista de URLs a chequear
+├── ansible/
+│   ├── ansible.cfg                 	  # Configuración de Ansible
+│   ├── playbook.yml               	      # Playbook principal
+│   ├── script_crear_roles.sh             # script que se uso para crear los roles
+│   ├── inventory/
+│   │   └── hosts                         # Inventario de VMs
+│   └── roles/
+│       ├── TP_INI/                       # Crea archivo de datos del grupo
+│       ├── Alta_Usuarios_Andres_Frias/   # Crea usuarios y grupos
+│       ├── Sudoers_Andres_Frias/         # Configura sudo sin password
+│       └── Instala-tools_Andres_Frias/   # Instala htop, tmux y speedtest-cli
+├── VagrantFile/
+│   └── Vagrantfile                       # Configuración de las VMs
+├── Docker/
+│   ├── web/
+│   │   ├── file/   
+│   │   │   └── info.txt                  # se usa para agregar informacion al html
+│   │   ├── scripts/   
+│	│	│   ├── get-current-date.js
+│	│	│ 	├── get-file-content.js
+│	│	│   └── get-ip-publica.js
+│	│	└── index.hrml					  # el html principal
+│   ├──  docker-compose.yml	
+│   ├──  dockerfile		
+│	└──  script_crear_imagen.sh  		  # crea la imagen docker
+└── LVM/
+    ├── 1_script_crear_particion.sh       # crea las particiones
+	├── 2_script_crear_swap.sh            # crea el swap
+	├── 3_script_crear_lv.sh              # crea LVM
+	├── 4_script_formatear.sh             # da formato mkfs.ext4 y mkswap
+	└── l5_script_montaje.sh              # punto de montaje
+
+```
+
+## Infraestructura (R2)
+
+2 VMs con QEMU (Apple Silicon):
+- **VM1-Grupo-AndresFrias** - Ubuntu 22.04 ARM64 (Testing)
+- **VM2-Grupo-AndresFrias** - Fedora (Producción)
+
+### Discos y LVM
+
+| VG       | LV           | Tamaño | Punto de Montaje |
+|----------|--------------|--------|------------------|
+| vg_datos | lv_docker    | 10M    | /var/lib/docker  |
+| vg_datos | lv_workareas | 2.5GB  | /work            |
+| vg_temp  | lv_swap      | 1.9GB  | SWAP             |
+
+
+Creacion de LVM:
+```bash
+cd LVM/
+bash 1_script_crear_particion.sh
+bash 2_script_crear_swap.sh
+bash 3_script_crear_lv.sh
+bash 4_script_formatear.sh
+bash 5_script_montaje.sh
+```
+
+## Bash Scripting (R3)
+
+### Alta de Usuarios
+Crea usuarios y grupos en el sistema a partir de una lista:
+```bash
+sudo bash Bash_Script/alta_usuarios/alta_usuarios.sh
+```
+
+### Chequeo de URLs
+Verifica si una lista de URLs están online:
+```bash
+sudo bash Bash_Script/check_url/check_URL.sh
+```
+
+## Ansible (R4)
+
+Ejecutar el playbook desde VM1:
+```bash
+cd Ansible/
+ansible-playbook -i inventory/hosts playbook.yml
+```
+
+### Roles
+- **TP_INI** - Crea `/tmp/Grupo/datos.txt` con info del grupo
+- **Alta_Usuarios_Andres_Frias** - Crea usuarios y grupos en ambas VMs
+- **Sudoers_Andres_Frias** - Configura sudo sin password para el grupo
+- **Instala-tools_Andres_Frias** - Instala htop, tmux y speedtest-cli
+
+### docker (R5)
+
+crear imagen:
+```bash
+cd Docker/
+bash script_crear_imagen.sh
+```
+
+para correr ejecute desde la misma carpeta Docker:
+```bash
+docker compose up -d
+```
+
+abrir el navegador y colocar:
+http://192.168.56.10:8081/
