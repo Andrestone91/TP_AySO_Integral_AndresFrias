@@ -58,7 +58,7 @@ Tecnicatura Universitaria en Programación - UTN FRA
 	├── 2_script_crear_swap.sh            # crea el swap
 	├── 3_script_crear_lv.sh              # crea LVM
 	├── 4_script_formatear.sh             # da formato mkfs.ext4 y mkswap
-	└── l5_script_montaje.sh              # punto de montaje
+	└── 5_script_montaje.sh              # punto de montaje
 
 ```
 
